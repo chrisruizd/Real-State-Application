@@ -1,0 +1,31 @@
+.schedule-dashboard {
+  color: red;
+  background-color: #111;
+  padding: 2rem;
+  min-height: 100vh;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.schedule-dashboard h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: red;
+}
+
+.schedule-dashboard p {
+  color: red;
+  font-size: 1.2rem;
+}
+
+.schedule-dashboard ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.schedule-dashboard li {
+  color: red;
+  border-bottom: 1px solid red;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+}
