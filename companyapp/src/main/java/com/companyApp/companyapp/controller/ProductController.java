@@ -25,7 +25,7 @@ public class ProductController {
     }
 
     @GetMapping("/product/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable int id){
+    public ResponseEntity<Product> getProductById(@PathVariable Long id){
         Product product = productService.getProductById(id);
 
         if (product != null) {
@@ -37,7 +37,7 @@ public class ProductController {
 
     //Mapping to add get the image
     @GetMapping("product/{productId}/image")
-    public ResponseEntity<byte[]> getImageByProductId(@PathVariable int productId){
+    public ResponseEntity<byte[]> getImageByProductId(@PathVariable Long productId){
         Product product = productService.getProductById(productId);
         if (product.getId() > 0) {
             return new ResponseEntity<>(product.getImageData(), HttpStatus.OK);
@@ -70,7 +70,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/product/{id}")
-    public ResponseEntity<String> deleteProduct(@PathVariable int id){
+    public ResponseEntity<String> deleteProduct(@PathVariable Long id){
         Product product = productService.getProductById(id);
         if(product != null){
             productService.deleteProduct(id);

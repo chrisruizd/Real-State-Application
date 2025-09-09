@@ -10,13 +10,13 @@ public interface ProductService {
 
     List<Product> getAllProducts();
 
-    Product getProductById(int id);
+    Product getProductById(Long id);
 
     Product addProduct(Product product, MultipartFile image) throws IOException;
 
     Product updatedProduct(Product product, MultipartFile image) throws IOException;
 
-    void deleteProduct(int id);
+    void deleteProduct(Long id);
 
     List<Product> searchProducts(String keyword);
 }
