@@ -159,11 +159,18 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
                       </a>
                     </li>
                     {user?.role === "ADMIN" && (
-                      <li className="nav-item">
-                        <a className="nav-link" href="/add_product">
-                          Add Property
-                        </a>
-                      </li>
+                      <>
+                        <li className="nav-item">
+                          <a className="nav-link" href="/add_product">
+                            Add Property
+                          </a>
+                        </li>
+                        <li className="nav-item">
+                          <a className="nav-link" href="/admin/users">
+                            Manage Users
+                          </a>
+                        </li>
+                      </>
                     )}
 
                     <li className="nav-item dropdown">

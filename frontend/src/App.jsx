@@ -17,6 +17,8 @@ import LandingPage from "./components/LandingPage";
 import ScheduleDashboard from "./components/ScheduleDashboard";
 import axios from 'axios';
 import AdminBookingDashboard from './components/AdminBookingDashboard';
+import AdminUsers from "./components/AdminUsers";
+import UserDetails from "./components/UserDetails";
 
 // ✅ Set Axios to include cookies with every request
 axios.defaults.withCredentials = true;
@@ -73,6 +75,10 @@ function App() {
           <Route path="/schedule" element={<ScheduleDashboard />} />
 
           <Route path="/admin/bookings" element={<AdminBookingDashboard />} />
+          
+          
+          <Route path="/admin/users" element={<AdminUsers />} />
+          <Route path="/admin/users/:id" element={<UserDetails />} />
         </Routes>
       </BrowserRouter>
     </AppProvider>
