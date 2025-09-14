@@ -85,7 +85,7 @@ public class TenantServiceImpl implements TenantService {
                 .collect(Collectors.toList());
     }
 
-    @Override
+    @Transactional(readOnly = true)
     public List<TenantResponse> getTenantsByUserId(Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
@@ -95,7 +95,7 @@ public class TenantServiceImpl implements TenantService {
                 .collect(Collectors.toList());
     }
 
-    @Override
+    @Transactional(readOnly = true)
     public TenantResponse getTenantById(Long id) {
         Tenant t = tenantRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Tenant not found"));

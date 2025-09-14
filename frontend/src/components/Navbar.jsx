@@ -153,11 +153,34 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
 
                 {user ? ( //User Authenticated
                   <>
+                    {/* Tenant */}
+                    {user?.role === "TENANT" && (
+                      <>
+                        <li className="nav-item">
+                          <a className="nav-link active" aria-current="page" href="/my-account">
+                            My Account
+                          </a>
+                        </li>
+                        <li className="nav-item">
+                          <a className="nav-link active" aria-current="page" href="home">
+                            Maintainance History
+                          </a>
+                        </li>
+                        <li className="nav-item">
+                          <a className="nav-link active" aria-current="page" href="home">
+                            Announcements
+                          </a>
+                        </li>
+                      </>
+                    )}
+
                     <li className="nav-item">
                       <a className="nav-link active" aria-current="page" href="/home">
                         Dashboard
                       </a>
                     </li>
+
+                    {/* Admin */}
                     {user?.role === "ADMIN" && (
                       <>
                         <li className="nav-item">

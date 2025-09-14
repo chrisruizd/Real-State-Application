@@ -21,6 +21,7 @@ import AdminUsers from "./components/AdminUsers";
 import UserDetails from "./components/UserDetails";
 import AssignTenant from "./components/AssignTenant";
 import TenantList from "./components/TenantList";
+import MyAccount from "./components/MyAccount";
 
 // ✅ Set Axios to include cookies with every request
 axios.defaults.withCredentials = true;
@@ -84,6 +85,8 @@ function App() {
 
           <Route path="/admin/assign-tenant/:userId?" element={<AssignTenant/>} />
           <Route path="/admin/tenants" element={<TenantList/>} />
+          <Route path="/my-account" element={<MyAccount />} />
+
         </Routes>
       </BrowserRouter>
     </AppProvider>

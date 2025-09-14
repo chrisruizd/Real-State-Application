@@ -49,8 +49,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/api/product/**").hasRole("ADMIN")
 
 
+                        // ✅ Bookings
                                 .requestMatchers(HttpMethod.GET, "/api/bookings/user/**").permitAll()
-
                         .requestMatchers(HttpMethod.GET, "/api/bookings/user").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/bookings/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/bookings").authenticated()
@@ -61,10 +61,13 @@ public class SecurityConfig {
 
                         .requestMatchers("/api/auth/me").permitAll()
 
+                        //Tenants
+                        .requestMatchers(HttpMethod.GET, "/api/tenants/user/**").hasAnyRole("TENANT", "ADMIN")
+                        .requestMatchers("/api/tenants/**").hasRole("ADMIN")
+
                         //Admin
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/api/tenants").hasRole("ADMIN")
-                        .requestMatchers("/api/tenants/**").hasRole("ADMIN")
+
 
                         .anyRequest().authenticated()
                 )
