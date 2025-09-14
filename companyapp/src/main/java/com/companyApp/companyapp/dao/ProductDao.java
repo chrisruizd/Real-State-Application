@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductDao extends JpaRepository<Product, Integer> {
+public interface ProductDao extends JpaRepository<Product, Long> {
 
     @Query("SELECT p from Product p WHERE " +
             "LOWER(p.address) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +

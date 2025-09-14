@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookingRequest {
-    private Integer productId;
+    private Long productId;
     private LocalDate tourDate;
 
 
@@ -23,11 +23,11 @@ public class BookingRequest {
         this.tourDate = tourDate;
     }
 
-    public Integer getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(Integer productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 

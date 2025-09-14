@@ -21,7 +21,7 @@ public class ProductServiceImpl implements ProductService {
         return productDao.findAll();
     }
 
-    public Product getProductById(int id){
+    public Product getProductById(Long id){
         return productDao.findById(id).orElse(null);
     }
 
@@ -41,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
         return productDao.save(product);
     }
 
-    public void deleteProduct(int id){
+    public void deleteProduct(Long id){
         productDao.deleteById(id);
     }
 
