@@ -6,6 +6,7 @@ import com.companyApp.companyapp.dto.TenantResponse;
 import com.companyApp.companyapp.service.TenantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 
@@ -30,6 +31,14 @@ public class TenantController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
+    }
+
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')") // only admins can update
+    public ResponseEntity<TenantResponse> updateTenant(
+            @PathVariable Long id,
+            @RequestBody TenantRequest request) {
+        return ResponseEntity.ok(tenantService.updateTenant(id, request));
     }
 
     // Admin list all tenants

@@ -79,6 +79,7 @@ public class TenantServiceImpl implements TenantService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<TenantResponse> getAllTenants() {
         return tenantRepository.findAll().stream()
                 .map(this::mapToResponse)
@@ -101,6 +102,25 @@ public class TenantServiceImpl implements TenantService {
                 .orElseThrow(() -> new ResourceNotFoundException("Tenant not found"));
         return mapToResponse(t);
     }
+
+    @Transactional
+    public TenantResponse updateTenant(Long tenantId, TenantRequest request) {
+        Tenant tenant = tenantRepository.findById(tenantId)
+                .orElseThrow(() -> new ResourceNotFoundException("Tenant not found"));
+
+        // update only the editable fields
+        tenant.setRent(request.getRent());
+        tenant.setDeposit(request.getDeposit());
+        tenant.setStartDate(request.getStartDate());
+        tenant.setEndDate(request.getEndDate());
+        tenant.setElectricityFee(request.isElectricityFee());
+        tenant.setWaterFee(request.isWaterFee());
+        tenant.setNumberTenants(request.getNumberTenants());
+
+        Tenant saved = tenantRepository.save(tenant);
+        return mapToResponse(saved);
+    }
+
 
     private TenantResponse mapToResponse(Tenant t) {
         return new TenantResponse(

@@ -1644,6 +1644,18 @@ body, html {
   cursor: pointer;
   transition: background 0.2s ease;
 }
+.assign-btn {
+  background: #ee3333;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  margin-left: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
 
 .btn-view:hover {
   background: #0056b3;
@@ -1837,5 +1849,76 @@ body, html {
 
 .nav-btn:hover {
   background: #005fa3;
+}
+
+
+
+
+/* ------------Tenant Details---------- */
+.tenant-details {
+  max-width: 500px;
+  margin: 1.5rem auto;
+  padding: 1.2rem;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+}
+
+.tenant-details h2 {
+  margin-bottom: 0.8rem;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.tenant-details p {
+  margin: 0.3rem 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.tenant-form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tenant-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  color: #333;
+}
+
+.tenant-form input[type="number"],
+.tenant-form input[type="date"] {
+  padding: 0.35rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+}
+
+.tenant-form input[type="checkbox"] {
+  margin-top: 0.3rem;
+  transform: scale(1.1);
+}
+
+.update-btn {
+  padding: 0.5rem;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.update-btn:hover {
+  background: #43a047;
 }
 

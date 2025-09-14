@@ -12,5 +12,6 @@ public interface TenantService {
     List<TenantResponse> getAllTenants();
     List<TenantResponse> getTenantsByUserId(Long userId);
     TenantResponse getTenantById(Long id);
+    TenantResponse updateTenant(Long tenantId, TenantRequest request);
 }
 

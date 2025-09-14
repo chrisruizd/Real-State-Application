@@ -49,7 +49,7 @@ const MyAccount = () => {
         ) : (
           tenants.map((t) => (
             <div key={t.id} className="account-card">
-              <h3>{t.productAddress}</h3> <br />
+              <h3>🏡{t.productAddress}</h3> <br />
               <p><strong>Tenant:</strong> {t.userFullName}</p>
               <p><strong>Rent:</strong> ${t.rent}</p>
               <p><strong>Deposit:</strong> ${t.deposit}</p>
