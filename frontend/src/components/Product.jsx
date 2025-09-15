@@ -116,37 +116,39 @@ const Product = () => {
             <span style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
               Monthly Rent: {"$" + product.price}
             </span>
-            <button
-              className="btn-hover color-9"
-                style={{
-                  margin: "10px 25px 0px",
-                  backgroundColor: product.productAvailable ? "" : "gray",
-                  cursor: product.productAvailable ? "pointer" : "not-allowed",
-                  color: product.productAvailable ? "" : "#fff",
-                  opacity: product.productAvailable ? 1 : 0.6,
-                  pointerEvents: product.productAvailable ? "auto" : "none",
-                }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (!user) {
-                    // 👇 show message if not logged in
-                    alert("Please log in or create an account to book a property.");
-                    return;
-                  }
+            {user?.role !== "ADMIN" && (
+              <button
+                className="btn-hover color-9"
+                  style={{
+                    margin: "10px 25px 0px",
+                    backgroundColor: product.productAvailable ? "" : "gray",
+                    cursor: product.productAvailable ? "pointer" : "not-allowed",
+                    color: product.productAvailable ? "" : "#fff",
+                    opacity: product.productAvailable ? 1 : 0.6,
+                    pointerEvents: product.productAvailable ? "auto" : "none",
+                  }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (!user) {
+                      // 👇 show message if not logged in
+                      alert("Please log in or create an account to book a property.");
+                      return;
+                    }
 
-                  // check if already in cart before adding
-                  if (!cart.some((item) => item.id === product.id)) {
-                    addToCart(product);
-                  }
-                }}
-                disabled={!product.productAvailable}
-              >
-                {cart.some((item) => item.id === product.id)
-                  ? "Selected 📌"
-                  : product.productAvailable
-                  ? "Book"
-                  : "Unavailable"}
-            </button>
+                    // check if already in cart before adding
+                    if (!cart.some((item) => item.id === product.id)) {
+                      addToCart(product);
+                    }
+                  }}
+                  disabled={!product.productAvailable}
+                >
+                  {cart.some((item) => item.id === product.id)
+                    ? "Selected 📌"
+                    : product.productAvailable
+                    ? "Book"
+                    : "Unavailable"}
+              </button>
+            )}
             <h6 style={{ marginBottom: "1rem" }}>
               <i style={{ color: product.productAvailable ? "green" : "red", fontWeight: "bold" }}>
                 {product.productAvailable ? "Property Available" : "Property Unavailable"}
