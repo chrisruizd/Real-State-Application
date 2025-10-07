@@ -52,6 +52,7 @@ const TenantDetails = () => {
         <h2>Tenant Details</h2>
         <p><strong>Name:</strong> {tenant.userFullName}</p>
         <p><strong>User ID:</strong> {tenant.userId}</p>
+        <p><strong>Tenant ID:</strong> {tenant.id}</p>
         <p><strong>Property:</strong> {tenant.productAddress}</p>
 
         <form className="tenant-form" onSubmit={handleSubmit}>

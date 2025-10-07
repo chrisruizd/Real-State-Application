@@ -68,6 +68,15 @@ public class SecurityConfig {
                         //Admin
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
 
+                        //payments
+                        .requestMatchers("/api/payments/{paymentId}/update-balance").hasRole("ADMIN")
+                        .requestMatchers("/api/payments/tenant/{tenantId}").permitAll()
+                        .requestMatchers("/api/payments/{paymentId}/mark-paid").hasRole("ADMIN")
+                        .requestMatchers("/api/payments/create/all").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/payments").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/payments/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/payments/**").hasRole("ADMIN")
+
 
                         .anyRequest().authenticated()
                 )

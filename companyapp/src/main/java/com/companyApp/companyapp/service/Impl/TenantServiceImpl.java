@@ -1,12 +1,14 @@
 package com.companyApp.companyapp.service.Impl;
 
 
+import com.companyApp.companyapp.dao.PaymentDao;
 import com.companyApp.companyapp.dao.ProductDao;
 import com.companyApp.companyapp.dao.TenantDao;
 import com.companyApp.companyapp.dao.UserDao;
 import com.companyApp.companyapp.dto.TenantRequest;
 import com.companyApp.companyapp.dto.TenantResponse;
 import com.companyApp.companyapp.exceptions.ResourceNotFoundException;
+import com.companyApp.companyapp.model.Payment;
 import com.companyApp.companyapp.model.Product;
 import com.companyApp.companyapp.model.Tenant;
 import com.companyApp.companyapp.model.User;
@@ -15,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,6 +32,10 @@ public class TenantServiceImpl implements TenantService {
 
     @Autowired
     private ProductDao productRepository;
+
+    @Autowired
+    private PaymentDao paymentRepository;
+
 
     public TenantResponse assignTenant(Long userId, TenantRequest request) {
         request.setUserId(userId); // ensure userId from path is bound
@@ -74,6 +81,11 @@ public class TenantServiceImpl implements TenantService {
         // mark product unavailable if desired
         product.setProductAvailable(false);
         productRepository.save(product);
+
+        // ✅ Create initial payment
+        LocalDate nextMonthFirstDay = LocalDate.now().plusMonths(1).withDayOfMonth(1);
+        Payment payment = new Payment(saved, saved.getRent(), false, null, nextMonthFirstDay);
+        paymentRepository.save(payment);
 
         return mapToResponse(saved);
     }
