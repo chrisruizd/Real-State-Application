@@ -22,6 +22,8 @@ import UserDetails from "./components/UserDetails";
 import AssignTenant from "./components/AssignTenant";
 import TenantList from "./components/TenantList";
 import MyAccount from "./components/MyAccount";
+import TenantDetails from "./components/TenantDetails";
+import TenantPayments from "./components/TenantPayments";
 
 // ✅ Set Axios to include cookies with every request
 axios.defaults.withCredentials = true;
@@ -86,6 +88,11 @@ function App() {
           <Route path="/admin/assign-tenant/:userId?" element={<AssignTenant/>} />
           <Route path="/admin/tenants" element={<TenantList/>} />
           <Route path="/my-account" element={<MyAccount />} />
+          <Route path="/admin/tenants/:id" element={<TenantDetails />} />
+
+          <Route path="/admin/tenants/:tenantId/payments" element={<TenantPayments />} />
+
+
 
         </Routes>
       </BrowserRouter>

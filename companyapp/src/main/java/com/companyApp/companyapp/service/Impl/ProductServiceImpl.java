@@ -5,6 +5,7 @@ import com.companyApp.companyapp.model.Product;
 import com.companyApp.companyapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -45,6 +46,7 @@ public class ProductServiceImpl implements ProductService {
         productDao.deleteById(id);
     }
 
+    @Transactional(readOnly = true)
     public List<Product> searchProducts(String keyword){
         return productDao.searchProducts(keyword);
     }
