@@ -77,6 +77,15 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/api/payments/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/payments/**").hasRole("ADMIN")
 
+                        //maintainance requests
+                        .requestMatchers("/api/maintenance/create").permitAll()
+                        .requestMatchers("/api/maintenance/tenant/{tenantId}").permitAll()
+                        .requestMatchers("/api/maintenance/all").hasRole("ADMIN")
+                        .requestMatchers("/api/maintenance/status/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/maintenance/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/maintenance/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/maintenance/**").permitAll()
+
 
                         .anyRequest().authenticated()
                 )

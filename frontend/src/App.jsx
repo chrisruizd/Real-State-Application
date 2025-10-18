@@ -24,6 +24,8 @@ import TenantList from "./components/TenantList";
 import MyAccount from "./components/MyAccount";
 import TenantDetails from "./components/TenantDetails";
 import TenantPayments from "./components/TenantPayments";
+import MaintenanceRequests from "./components/MaintenanceRequests";
+import AdminMaintenanceDashboard from "./components/AdminMaintenanceDashboard";
 
 // ✅ Set Axios to include cookies with every request
 axios.defaults.withCredentials = true;
@@ -92,7 +94,8 @@ function App() {
 
           <Route path="/admin/tenants/:tenantId/payments" element={<TenantPayments />} />
 
-
+          <Route path="/tenant/maintenance" element={<MaintenanceRequests />} />
+          <Route path="/admin/maintenance" element={<AdminMaintenanceDashboard  />} />
 
         </Routes>
       </BrowserRouter>
