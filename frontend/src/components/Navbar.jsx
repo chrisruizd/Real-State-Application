@@ -162,8 +162,8 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
                           </a>
                         </li>
                         <li className="nav-item">
-                          <a className="nav-link active" aria-current="page" href="home">
-                            Maintainance History
+                          <a className="nav-link active" aria-current="page" href="/tenant/maintenance">
+                            Maintainance Request
                           </a>
                         </li>
                         <li className="nav-item">
@@ -191,6 +191,11 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
                         <li className="nav-item">
                           <a className="nav-link" href="/admin/users">
                             Manage Users
+                          </a>
+                        </li>
+                        <li className="nav-item">
+                          <a className="nav-link" href="/admin/maintenance">
+                            Manteinance
                           </a>
                         </li>
                       </>
